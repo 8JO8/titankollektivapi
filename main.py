@@ -77,7 +77,7 @@ def gettoken_required(f):
     return getdecorated
 
 # Endpoint to create a new entry
-@app.route('/event/create', methods=['POST'])
+@app.route('/api/event/create', methods=['POST'])
 @createtoken_required
 def create_entry():
     data = request.get_json()
@@ -103,7 +103,7 @@ def create_entry():
 
 
 # Endpoint to delete an entry
-@app.route('/event/delete/<int:entry_id>', methods=['DELETE'])
+@app.route('/api/event/delete/<int:entry_id>', methods=['DELETE'])
 @deletetoken_required
 def delete_entry(entry_id):
     entry = Entry.query.get(entry_id)
@@ -119,7 +119,7 @@ def delete_entry(entry_id):
         return jsonify({'message': 'An error occurred while deleting the entry.'}), 500
 
 # Endpoint to retrieve all entry IDs with status equal to 0
-@app.route('/event/getall', methods=['GET'])
+@app.route('/api/event/getall', methods=['GET'])
 @gettoken_required
 def get_entries():
     try:
