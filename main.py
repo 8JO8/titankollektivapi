@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 # Configure the database URI. Replace 'username', 'password', 'hostname', 'port', and 'database_name' with your actual database credentials.
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://' + os.getenv("DBUser") + ":" + os.getenv("DBPassword") + "@" + os.getenv("DBServer") + ":" + os.getenv("DBPort") + "/" + os.getenv("DBTable")
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://' + os.getenv("DBUser") + ":" + os.getenv("DBPassword") + "@" + os.getenv("DBServer") + ":" + os.getenv("DBPort") + "/" + os.getenv("DBName")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
