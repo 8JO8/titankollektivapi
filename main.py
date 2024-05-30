@@ -118,15 +118,20 @@ def delete_entry(entry_id):
         db.session.rollback()
         return jsonify({'message': 'An error occurred while deleting the entry.'}), 500
 
-# Endpoint to retrieve all entry IDs with status equal to 0
+# Endpoint to retrieve all entry IDs with status equal to 0, along with their Name and Location
 @app.route('/api/event/getall', methods=['GET'])
 @gettoken_required
 def get_entries():
     try:
-        entry_ids = [entry.Id for entry in Entry.query.filter_by(State=0).all()]
-        return jsonify({'entry_ids': entry_ids}), 200
+        entries = Entry.query.filter_by(State=0).all()
+        entry_list = [
+            {'Nummer': entry.Id, 'Name': entry.Name, 'Ort': entry.Location}
+            for entry in entries
+        ]
+        return jsonify({'entries': entry_list}), 200
     except Exception as e:
         return jsonify({'message': 'An error occurred while retrieving entries.'}), 500
+
 
 
 if __name__ == '__main__':
