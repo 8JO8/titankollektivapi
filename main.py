@@ -125,7 +125,10 @@ def get_entries():
     try:
         entries = Entry.query.filter_by(State=0).all()
         entry_list = [
-            {'Nummer': entry.Id, 'Name': entry.Name, 'Ort': entry.Location}
+            {
+                'id': entry.Id,
+                'friendlyText': f"Nummer: {entry.Id} {entry.Name} in {entry.Location}"
+            }
             for entry in entries
         ]
         return jsonify({'entries': entry_list}), 200
