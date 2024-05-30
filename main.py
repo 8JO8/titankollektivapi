@@ -127,7 +127,7 @@ def get_entries():
         entry_list = [
             {
                 'id': entry.Id,
-                'friendlyText': f"Nummer: {entry.Id} {entry.Name} in {entry.Location}"
+                'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}.{entry.Month}"
             }
             for entry in entries
         ]
