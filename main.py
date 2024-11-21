@@ -32,7 +32,7 @@ with app.app_context():
 
 # Endpoint to retrieve all entryss with status equal to 0
 @app.route('/api/v2/event/get/active', methods=['GET'])
-def get_entries():
+def get_entries_active():
     try:
         entries = Entry.query.filter_by(State=0).all()
         entry_list = [
@@ -52,7 +52,7 @@ def get_entries():
 
 # Endpoint to retrieve all entrys with status equal to 255
 @app.route('/api/v2/event/get/inactive', methods=['GET'])
-def get_entries():
+def get_entries_inactive():
     try:
         entries = Entry.query.filter_by(State=255).all()
         entry_list = [
@@ -72,7 +72,7 @@ def get_entries():
 
 # Endpoint to retrieve all entrys
 @app.route('/api/v2/event/get/all', methods=['GET'])
-def get_entries():
+def get_entries_all():
     try:
         entries = Entry.query.all()
         entry_list = [
