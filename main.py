@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, make_response
+from flask import Flask, request, jsonify, make_response, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 import os
@@ -44,7 +44,7 @@ def get_entries_active():
                 'monthString': entry.Month,
                 'imageLink': entry.ImageLink,
                 'ticketLink': entry.TicketLink,
-                'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}.{entry.Month}"
+                'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}. {entry.Month}"
             }
             for entry in entries
         ]
@@ -66,7 +66,7 @@ def get_entries_inactive():
                 'monthString': entry.Month,
                 'imageLink': entry.ImageLink,
                 'ticketLink': entry.TicketLink,
-                'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}.{entry.Month}"
+                'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}. {entry.Month}"
             }
             for entry in entries
         ]
@@ -88,7 +88,7 @@ def get_entries_all():
                 'monthString': entry.Month,
                 'imageLink': entry.ImageLink,
                 'ticketLink': entry.TicketLink,
-                'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}.{entry.Month}"
+                'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}. {entry.Month}"
             }
             for entry in entries
         ]
@@ -97,6 +97,10 @@ def get_entries_all():
         return jsonify({'message': 'An error occurred while retrieving entries.'}), 500
 
 
+# Endpoint for documentation
+@app.route('/api/v2/docs')
+def serve_documentation():
+    return send_from_directory('app', 'Documentation.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=False)
