@@ -30,7 +30,7 @@ class Entry(db.Model):
 with app.app_context():
     db.create_all()
 
-# Endpoint to retrieve all entryss with status equal to 0
+# Endpoint to retrieve all entrys with status equal to 0
 @app.route('/api/v2/event/get/active', methods=['GET'])
 def get_entries_active():
     try:
@@ -42,6 +42,8 @@ def get_entries_active():
                 'location': entry.Location,
                 'day': entry.Day,
                 'monthString': entry.Month,
+                'imageLink': entry.ImageLink,
+                'ticketLink': entry.TicketLink,
                 'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}.{entry.Month}"
             }
             for entry in entries
@@ -62,6 +64,8 @@ def get_entries_inactive():
                 'location': entry.Location,
                 'day': entry.Day,
                 'monthString': entry.Month,
+                'imageLink': entry.ImageLink,
+                'ticketLink': entry.TicketLink,
                 'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}.{entry.Month}"
             }
             for entry in entries
@@ -82,6 +86,8 @@ def get_entries_all():
                 'location': entry.Location,
                 'day': entry.Day,
                 'monthString': entry.Month,
+                'imageLink': entry.ImageLink,
+                'ticketLink': entry.TicketLink,
                 'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}.{entry.Month}"
             }
             for entry in entries
