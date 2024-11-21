@@ -100,7 +100,7 @@ def get_entries_all():
 # Endpoint for documentation
 @app.route('/api/v2/docs')
 def serve_documentation():
-    return send_from_directory('app', 'Documentation.html')
+    return send_from_directory('/app', 'Documentation.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=False)
