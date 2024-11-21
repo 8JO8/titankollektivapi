@@ -7,9 +7,6 @@ ENV DBPassword=""
 ENV DBServer=""
 ENV DBPort=""
 ENV DBName=""
-ENV CreateToken=""
-ENV DeleteToken=""
-ENV GetToken=""
 
 # Set the working directory in the container
 WORKDIR /app
