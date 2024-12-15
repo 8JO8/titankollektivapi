@@ -19,10 +19,11 @@ class Entry(db.Model):
     Name = db.Column(db.String(50))
     Description = db.Column(db.String(100))
     Location = db.Column(db.String(50))
-    Day = db.Column(db.Integer)
+    Day = db.Column(db.String(2))
     Month = db.Column(db.String(3))
+    Year = db.Column(db.String(4))
     Time = db.Column(db.String(50))
-    ImageLink = db.Column(db.String(150))
+    ImageLink = db.Column(db.String(150), default='https://cdn.ticket.io/companies/jXIhS4na/events/v06c3gq0/img/holder-1080.jpg')
     TicketLink = db.Column(db.String(150), default='https://titankollektiv.de/tickets')
     State = db.Column(db.Integer, default=0)
 
@@ -42,6 +43,7 @@ def get_entries_active():
                 'location': entry.Location,
                 'day': entry.Day,
                 'monthString': entry.Month,
+                'year': entry.Year,
                 'imageLink': entry.ImageLink,
                 'ticketLink': entry.TicketLink,
                 'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}. {entry.Month}"
@@ -64,6 +66,7 @@ def get_entries_inactive():
                 'location': entry.Location,
                 'day': entry.Day,
                 'monthString': entry.Month,
+                'year': entry.Year,
                 'imageLink': entry.ImageLink,
                 'ticketLink': entry.TicketLink,
                 'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}. {entry.Month}"
@@ -86,6 +89,7 @@ def get_entries_all():
                 'location': entry.Location,
                 'day': entry.Day,
                 'monthString': entry.Month,
+                'year': entry.Year,
                 'imageLink': entry.ImageLink,
                 'ticketLink': entry.TicketLink,
                 'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}. {entry.Month}"
