@@ -46,7 +46,7 @@ def get_entries_active():
                 'year': entry.Year,
                 'imageLink': entry.ImageLink,
                 'ticketLink': entry.TicketLink,
-                'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}. {entry.Month}"
+                'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}. {entry.Month} {entry.Year}"
             }
             for entry in entries
         ]
@@ -69,7 +69,7 @@ def get_entries_inactive():
                 'year': entry.Year,
                 'imageLink': entry.ImageLink,
                 'ticketLink': entry.TicketLink,
-                'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}. {entry.Month}"
+                'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}. {entry.Month} {entry.Year}"
             }
             for entry in entries
         ]
@@ -92,7 +92,7 @@ def get_entries_all():
                 'year': entry.Year,
                 'imageLink': entry.ImageLink,
                 'ticketLink': entry.TicketLink,
-                'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}. {entry.Month}"
+                'friendlyText': f"Nummer: {entry.Id} | {entry.Name} in {entry.Location} am {entry.Day}. {entry.Month} {entry.Year}"
             }
             for entry in entries
         ]
